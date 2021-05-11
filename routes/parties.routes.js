@@ -3,7 +3,7 @@ const Party = require('../models/Party.model');
 const router = express.Router();
 
 router.get("/", (req, res, next) => {
-  Party.find({ user: req.user.id })
+  Party.find({})
   .then(party =>  res.status(200).json(party))
   .catch(err => res.status(500).json(err))
 })
@@ -16,15 +16,27 @@ router.get("/:id", (req, res, next) => {
 })
 
 router.post("/", (req, res, next) => {
-  const { name, age, city, date, street } = req.body;
+  const { name, description, images, date, city, street, averageAge, musicType, price, smoking } = req.body;
 
   if(!name){
     return res.status(400).json({ message: "Name is required"});
   }
 
-  Party.create({ name, images, date, city, street, user: req.user.id,  })
-  .then(party => res.status(200).json(party))
-  .catch(err => res.status(500).json(err))
+  Party.create({
+    name,
+    description,
+    images,
+    date,
+    city,
+    street,
+    averageAge,
+    musicType,
+    price,
+    smoking,
+    user: req.user.id
+  })
+    .then((party) => res.status(200).json(party))
+    .catch((err) => res.status(500).json(err));
 })
 
 router.put("/:id", (req, res, next) => {

@@ -3,17 +3,18 @@ const Schema = mongoose.Schema;
 
 const partySchema = new Schema({
   
-   name: {type: String, required: true},
-   description: {type: String, required: true},
-   images: {type: Array, required: true},
-   date: {type: Date, required: true},
-   city: {type: String},
-   street: {type: String},
-   ageInterval: {type: String},
-   musicType: {type: String},
-   price: {type: Number},
-   attendants: [{type: Schema.Types.ObjectId,ref:'User'}],
-   smoking: {type: Boolean}
+   name: {type: String, },
+   description: {type: String, },
+  images: { type: [String],  },
+   date: {type: String, },
+   city: {type: String, },
+   street: {type: String, },
+   averageAge: {type: Number, },
+   musicType: {type: String, },
+   price: {type: Number, },
+   attendees: [{type: Schema.Types.ObjectId,ref:'User'}],
+  smoking: { type: Boolean,  },
+  user: {type: Schema.Types.ObjectId, ref: "User"}
  
 }, {
   timestamps: true,

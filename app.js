@@ -14,10 +14,13 @@ require('./configs/cors.config')(app);
 require('./configs/session.config')(app);
 require('./configs/passport.config')(app);
 
-const todoRouter = require('./routes/parties.routes');
+const partyRouter = require("./routes/parties.routes");
 const authRouter = require('./routes/auth.routes');
-app.use('/api/todos', todoRouter);
+const reviewRouter = require("./routes/review.routes")
+app.use('/api/parties', partyRouter);
 app.use('/api/auth', authRouter);
+app.use('/api/reviews', reviewRouter);
+
 
 //  Catch 404 and respond with error message
 app.use((req, res, next) => {
