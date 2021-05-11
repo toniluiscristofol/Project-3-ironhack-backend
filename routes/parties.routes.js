@@ -22,7 +22,7 @@ router.post("/", (req, res, next) => {
     return res.status(400).json({ message: "Name is required"});
   }
 
-  Party.create({ name, age, city, date, street, user: req.user.id  })
+  Party.create({ name, images, date, city, street, user: req.user.id,  })
   .then(party => res.status(200).json(party))
   .catch(err => res.status(500).json(err))
 })
@@ -43,3 +43,17 @@ router.delete("/:id", (req, res, next) => {
 
 
 module.exports = router;
+
+
+// name: {type: String, required: true},
+//    description: {type: String, required: true},
+//    images: {type: Array, required: true},
+//    date: {type: Date, required: true},
+//    city: {type: String},
+//    street: {type: String},
+//    ageInterval: {type: String},
+//    musicType: {type: String},
+//    price: {type: Number},
+//    attendants: [{type: Schema.Types.ObjectId,ref:'User'}],
+//    smoking: {type: Boolean}
+ 
