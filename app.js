@@ -14,7 +14,7 @@ require('./configs/cors.config')(app);
 require('./configs/session.config')(app);
 require('./configs/passport.config')(app);
 
-const todoRouter = require('./routes/todos.routes');
+const todoRouter = require('./routes/parties.routes');
 const authRouter = require('./routes/auth.routes');
 app.use('/api/todos', todoRouter);
 app.use('/api/auth', authRouter);
