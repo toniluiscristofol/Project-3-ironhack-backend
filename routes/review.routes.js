@@ -2,8 +2,9 @@ const express = require("express");
 const Review = require("../models/Review.model");
 const router = express.Router();
 
-router.get("/", (req, res, next) => {
-  Review.find({})
+router.get("/user/:id", (req, res, next) => {
+  const { id } = req.params
+  Review.find({user: id})
     .then((review) => res.status(200).json(review))
     .catch((err) => res.status(500).json(err));
 });
@@ -27,9 +28,9 @@ router.post("/", (req, res, next) => {
   }
 
   Review.create({
-      value:7,
-      description:"love it ",
-      role:"host",
+      value,
+      description,
+      role,
     user: req.user.id
   })
     .then((review) => res.status(200).json(review))
