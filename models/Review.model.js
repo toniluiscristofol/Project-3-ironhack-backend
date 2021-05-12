@@ -3,13 +3,16 @@ const Schema = mongoose.Schema;
 
 const reviewSchema = new Schema(
   {
-    value: Number,
+    rating: Number,
     description: String,
     role: {
       type: String,
       enum: ["host", "attendee"],
     },
-    user: { type: Schema.Types.ObjectId, ref: "User" },
+    author: { type: Schema.Types.ObjectId, ref: "User", required: true },
+    images: [String],
+    party: { type: Schema.Types.ObjectId, ref: "Party", required: true },
+    receiver: { type: Schema.Types.ObjectId, ref: "User" },
   },
   {
     timestamps: true,

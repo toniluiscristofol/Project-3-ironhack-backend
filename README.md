@@ -120,7 +120,7 @@ User model
   password: {type: String, required: true},
   parties: [{type: Schema.Types.ObjectId, ref: "Party"}],
   goingToParties: [{type: Schema.Types.ObjectId, ref:"Party"}],
-  rating: {type: Number}
+  reviews: { type: [{ type: Schema.Types.ObjectId, ref: "Review" }, { type: Schema.Types.ObjectId, ref: "Review"}] }
 }
 ```
 
@@ -143,7 +143,19 @@ party model
    smoking: {type: Boolean}
  }
 ```
+review model
 
+```javascript
+{
+    value: Number,
+    description: String,
+    role: {
+      type: String,
+      enum: ["host", "attendee"],
+    },
+    user: { type: Schema.Types.ObjectId, ref: "User" },
+  }
+```
 
 
 

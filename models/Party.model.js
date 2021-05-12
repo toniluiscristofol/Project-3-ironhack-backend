@@ -1,32 +1,32 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const partySchema = new Schema({
-  
-   name: {type: String, },
-   description: {type: String, },
-  images: { type: [String],  },
-   date: {type: String, },
-   city: {type: String, },
-   street: {type: String, },
-   averageAge: {type: Number, },
-   musicType: {type: String, },
-   price: {type: Number, },
-   attendees: [{type: Schema.Types.ObjectId,ref:'User'}],
-  smoking: { type: Boolean,  },
-  user: {type: Schema.Types.ObjectId, ref: "User"}
- 
-}, {
-  timestamps: true,
-  toJSON: {
-    transform: (doc, ret) => {
-      ret.id = doc._id;
-      delete ret._id;
-      delete ret.__v;
-      return ret;
-    }
+const partySchema = new Schema(
+  {
+    name: { type: String },
+    description: { type: String },
+    images: { type: [String] },
+    date: { type: String },
+    location: {
+      city: String,
+      street: String,
+    },
+    price: { type: Number },
+    attendees: [{ type: Schema.Types.ObjectId, ref: "User" }],
+    author: { type: Schema.Types.ObjectId, ref: "User" },
+  },
+  {
+    timestamps: true,
+    toJSON: {
+      transform: (doc, ret) => {
+        ret.id = doc._id;
+        delete ret._id;
+        delete ret.__v;
+        return ret;
+      },
+    },
   }
-})
+);
 
-const Party = mongoose.model('Party', partySchema);
+const Party = mongoose.model("Party", partySchema);
 module.exports = Party;
