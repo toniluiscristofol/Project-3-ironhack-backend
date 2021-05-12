@@ -6,7 +6,7 @@ const userSchema = new Schema({
   password: { type: String, required: true, minlength: 3 },
   parties: [{type: Schema.Types.ObjectId, ref:"Party"}],
   goingToParties: [{type: Schema.Types.ObjectId, ref:"Party"}],
-  reviews: { type: [{ type: Schema.Types.ObjectId, ref: "Review" }, { type: Schema.Types.ObjectId, ref: "Review"}] },
+ 
   email: {
     type: String,
     unique: true, 
