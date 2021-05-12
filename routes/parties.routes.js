@@ -1,6 +1,7 @@
 const express = require('express');
 const Party = require('../models/Party.model');
 const router = express.Router();
+const uploader = require('../configs/cloudinary.config');
 
 router.get("/", (req, res, next) => {
   Party.find({})
@@ -32,8 +33,8 @@ router.post("/", (req, res, next) => {
     averageAge,
     musicType,
     price,
-    smoking,
-    user: req.user.id
+    smoking
+    // user: req.user.id
   })
     .then((party) => res.status(200).json(party))
     .catch((err) => res.status(500).json(err));
@@ -44,6 +45,13 @@ router.put("/:id", (req, res, next) => {
   Party.findOneAndUpdate({ _id: id, user: req.user.id  }, req.body, { new: true })
   .then(party => res.status(200).json(party))
   .catch(err => res.status(500).json(err))
+})
+
+router.put('/edit', uploader.single('photo'), (req, res, next) => {
+  console.log(req.file);
+  User.findOneAndUpdate({ _id: req.user.id }, { ...req.body, photo: req.file ? req.file.path : req.user.photo }, { new: true })
+  .then(user => res.status(200).json(user))
+  .catch(error => res.status(500).json(error))
 })
 
 router.delete("/:id", (req, res, next) => {
