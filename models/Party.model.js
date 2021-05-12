@@ -6,7 +6,7 @@ const partySchema = new Schema(
     name: { type: String },
     description: { type: String },
     images: { type: [String] },
-    date: { type: String },
+    date: { type: Object },
     location: {
       city: String,
       street: String,
