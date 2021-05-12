@@ -16,6 +16,19 @@ router.get("/search", (req, res, next) => {
     .catch((err) => res.status(500).json(err));
 });
 
+router.get("/searchbydate", (req, res, next) => {
+  const { date } = req.query;
+  Party.find({ date })
+    .then((parties) => res.status(200).json(parties))
+    .catch((err) => res.status(500).json(err));
+});
+router.get("/searchmany", (req, res, next) => {
+  const { date, city } = req.query;
+  Party.find({ $and: [{ date }, { "location.city": city }] })
+    .then((parties) => res.status(200).json(parties))
+    .catch((err) => res.status(500).json(err));
+});
+
 router.get("/:id", (req, res, next) => {
   const { id } = req.params;
   Party.findOne({ _id: id, user: req.user.id })
