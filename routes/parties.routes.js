@@ -1,7 +1,7 @@
 const express = require("express");
 const Party = require("../models/Party.model");
 const router = express.Router();
-
+const uploader = require("../configs/cloudinary.config");
 router.get("/", (req, res, next) => {
   Party.find({})
     .then((party) => res.status(200).json(party))
@@ -35,13 +35,14 @@ router.get("/:id", (req, res, next) => {
     .catch((err) => res.status(500).json(err));
 });
 
-router.post("/", (req, res, next) => {
+router.post("/", uploader.array("images"), (req, res, next) => {
+  console.log(`These are the req.files ${req.files}`)
   const {
     name,
     description,
-    images,
     date,
-    location,
+    city,
+    street,
     price,
     
   } = req.body;
@@ -50,15 +51,17 @@ router.post("/", (req, res, next) => {
     return res.status(400).json({ message: "Name is required" });
   }
 
+  // photo: req.file ? req.file.path : req.user.photo; 
   Party.create({
     name,
     description,
-    images,
+    // images: req.files[0].path,
     date,
-    location,
+    city,
+    street,
     price,
-   
-    user: req.user.id,
+    attendees: req.user.id,
+    author: req.user.id,
   })
     .then((party) => res.status(200).json(party))
     .catch((err) => res.status(500).json(err));

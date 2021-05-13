@@ -7,10 +7,9 @@ const partySchema = new Schema(
     description: { type: String },
     images: { type: [String] },
     date: { type: Object },
-    location: {
+    
       city: String,
       street: String,
-    },
     price: { type: Number },
     attendees: [{ type: Schema.Types.ObjectId, ref: "User" }],
     author: { type: Schema.Types.ObjectId, ref: "User" },

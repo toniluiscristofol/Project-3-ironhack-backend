@@ -6,7 +6,7 @@ const userSchema = new Schema({
   password: { type: String, required: true, minlength: 3 },
   parties: [{type: Schema.Types.ObjectId, ref:"Party"}],
   goingToParties: [{type: Schema.Types.ObjectId, ref:"Party"}],
- 
+  image: { type: String, default:"https://i.pinimg.com/originals/3e/dc/d2/3edcd292c8aa108b8e48f03993d01635.png"},
   email: {
     type: String,
     unique: true, 
