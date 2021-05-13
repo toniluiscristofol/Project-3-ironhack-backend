@@ -41,7 +41,8 @@ router.get("/searchmany", (req, res, next) => {
 
 router.get("/:id", (req, res, next) => {
   const { id } = req.params;
-  Party.findOne({ _id: id, user: req.user.id })
+  console.log(id)
+  Party.findOne({ _id: id})
     .then((party) => res.status(200).json(party))
     .catch((err) => res.status(500).json(err));
 });

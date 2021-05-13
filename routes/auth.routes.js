@@ -79,7 +79,7 @@ router.put('/edit', uploader.single('photo'), (req, res, next) => {
   console.log("reqfile" , req.file);
   console.log("req.userid", req.user.id)
   console.log("reqbody", req.body)
-  User.findByIdAndUpdate( req.user.id , { username: req.body.username}, { new: true })
+  User.findByIdAndUpdate( req.user.id , { ...req.body, photo: req.file ? req.file.path : req.user.photo }, { new: true })
   .then(user => res.status(200).json(user))
   .catch(error => {
     console.log("holaquetal")
