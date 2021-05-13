@@ -6,7 +6,7 @@ const userSchema = new Schema({
   password: { type: String, required: true, minlength: 3 },
   parties: [{type: Schema.Types.ObjectId, ref:"Party"}],
   goingToParties: [{type: Schema.Types.ObjectId, ref:"Party"}],
- 
+  photo: { type: String, default:"https://d3ipks40p8ekbx.cloudfront.net/dam/jcr:3a4e5787-d665-4331-bfa2-76dd0c006c1b/user_icon.png"},
   email: {
     type: String,
     unique: true, 
@@ -15,7 +15,7 @@ const userSchema = new Schema({
     required: true,
     match: [/(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/, 'Please fill a valid password']
   },
-  
+    
 }, {
   timestamps: true,
   toJSON: {

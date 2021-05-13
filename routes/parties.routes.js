@@ -29,6 +29,16 @@ router.get("/searchmany", (req, res, next) => {
     .catch((err) => res.status(500).json(err));
 });
 
+
+// router.get("/searchAll", (req, res, next) => {
+//   const { search } = req.query;
+//   Party.find({ $or: [{ description: {$regex :`.*(?i)${search}.*`} },{ "city: {$regex :`.*(?i)${search}.*`} }] })
+//     .then((parties) => res.status(200).json(parties))
+//     .catch((err) => res.status(500).json(err));
+// });
+
+
+
 router.get("/:id", (req, res, next) => {
   const { id } = req.params;
   Party.findOne({ _id: id, user: req.user.id })
@@ -74,12 +84,12 @@ router.put("/:id", (req, res, next) => {
     .catch((err) => res.status(500).json(err));
 });
 
-router.put('/edit', uploader.single('photo'), (req, res, next) => {
-  console.log(req.file);
-  User.findOneAndUpdate({ _id: req.user.id }, { ...req.body, photo: req.file ? req.file.path : req.user.photo }, { new: true })
-  .then(user => res.status(200).json(user))
-  .catch(error => res.status(500).json(error))
-})
+// router.put('/edit', uploader.single('photo'), (req, res, next) => {
+//   console.log(req.file);
+//   User.findOneAndUpdate({ _id: req.user.id }, { ...req.body, photo: req.file ? req.file.path : req.user.photo }, { new: true })
+//   .then(user => res.status(200).json(user))
+//   .catch(error => res.status(500).json(error))
+// })
 
 router.delete("/:id", (req, res, next) => {
   const { id } = req.params;
