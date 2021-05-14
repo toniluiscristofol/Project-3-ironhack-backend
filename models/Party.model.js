@@ -12,7 +12,8 @@ const partySchema = new Schema(
       street: String,
     price: { type: Number },
     attendees: [{ type: Schema.Types.ObjectId, ref: "User" }],
-    author: { type: Schema.Types.ObjectId, ref: "User" },
+    host: { type: Schema.Types.ObjectId, ref: "User" },
+    maxAttendees: {type: Number}
   },
   {
     timestamps: true,

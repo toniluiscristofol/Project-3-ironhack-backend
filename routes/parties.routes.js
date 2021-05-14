@@ -1,7 +1,8 @@
 const express = require("express");
 const Party = require("../models/Party.model");
 const router = express.Router();
-const uploader = require("../configs/cloudinary.config");
+const uploader = require('../configs/cloudinary.config');
+
 router.get("/", (req, res, next) => {
   Party.find({})
     .then((party) => res.status(200).json(party))
@@ -28,14 +29,28 @@ router.get("/searchmany", (req, res, next) => {
     .catch((err) => res.status(500).json(err));
 });
 
+
+// router.get("/searchAll", (req, res, next) => {
+//   const { search } = req.query;
+//   Party.find({ $or: [{ description: {$regex :`.*(?i)${search}.*`} },{ "city: {$regex :`.*(?i)${search}.*`} }] })
+//     .then((parties) => res.status(200).json(parties))
+//     .catch((err) => res.status(500).json(err));
+// });
+
+
+
 router.get("/:id", (req, res, next) => {
   const { id } = req.params;
-  Party.findOne({ _id: id, user: req.user.id })
+  console.log(id)
+  Party.findOne({ _id: id })
+    // .populate("host")
+    // .populate("attendees")
     .then((party) => res.status(200).json(party))
     .catch((err) => res.status(500).json(err));
 });
 
 router.post("/", uploader.array("images"), (req, res, next) => {
+  console.log(req.body)
   console.log(`These are the req.files ${req.files}`)
   const {
     name,
@@ -44,6 +59,7 @@ router.post("/", uploader.array("images"), (req, res, next) => {
     city,
     street,
     price,
+    maxAttendees
     
   } = req.body;
 
@@ -60,8 +76,10 @@ router.post("/", uploader.array("images"), (req, res, next) => {
     city,
     street,
     price,
+    maxAttendees,
     attendees: req.user.id,
-    author: req.user.id,
+    host: req.user.id,
+    
   })
     .then((party) => res.status(200).json(party))
     .catch((err) => res.status(500).json(err));
@@ -76,12 +94,27 @@ router.put("/:id", (req, res, next) => {
     .catch((err) => res.status(500).json(err));
 });
 
+// router.put('/edit', uploader.single('photo'), (req, res, next) => {
+//   console.log(req.file);
+//   User.findOneAndUpdate({ _id: req.user.id }, { ...req.body, photo: req.file ? req.file.path : req.user.photo }, { new: true })
+//   .then(user => res.status(200).json(user))
+//   .catch(error => res.status(500).json(error))
+// })
+
 router.delete("/:id", (req, res, next) => {
   const { id } = req.params;
   Party.findOneAndRemove({ _id: id, user: req.user.id })
     .then(() => res.status(200).json({ message: `Party ${id} deleted 🗑` }))
     .catch((err) => res.status(500).json(err));
 });
+
+router.get("/profile", (req, res, next) => {
+
+  Party.find({ host: req.user.id })
+    
+    .then(() => res.status(200).json({ message: `Party ${id} deleted 🗑` }))
+    .catch((err) => res.status(500).json(err));
+})
 
 module.exports = router;
 

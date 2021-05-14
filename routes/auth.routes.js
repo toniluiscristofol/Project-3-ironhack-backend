@@ -2,6 +2,7 @@ const express = require('express');
 const passport = require('passport');
 const router = express.Router();
 const User = require('../models/User.model');
+const uploader = require('../configs/cloudinary.config');
 
 // Bcrypt config to encrypt passwords
 const bcrypt = require('bcryptjs');
@@ -30,7 +31,8 @@ router.post('/signup', (req, res, next) => {
     User.create({
       username, 
       email, 
-      password: hashPass
+      password: hashPass,
+      photo
     })
     .then((newUser) => {
       // Passport req.login permite iniciar sesión tras crear el usuario
@@ -72,6 +74,20 @@ router.post('/logout', (req, res, next) => {
   req.logout();
   return res.status(200).json({ message: 'Log out success!'});
 })
+
+router.put('/edit', uploader.single('photo'), (req, res, next) => {
+  console.log("reqfile" , req.file);
+  console.log("req.userid", req.user.id)
+  console.log("reqbody", req.body)
+  User.findByIdAndUpdate( req.user.id , { ...req.body, photo: req.file ? req.file.path : req.user.photo }, { new: true })
+  .then(user => res.status(200).json(user))
+  .catch(error => {
+    console.log("holaquetal")
+    res.status(500).json(error)
+  })
+  
+})
+
 
 router.get('/loggedin', (req, res, next) => {
   // req.isAuthenticated & req.user are defined by passport
