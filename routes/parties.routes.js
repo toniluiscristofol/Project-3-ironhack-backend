@@ -47,11 +47,23 @@ router.get("/:id", (req, res, next) => {
     .catch((err) => res.status(500).json(err));
 });
 
+router.get("/userparties", (req, res, next) =>{
+  Party.find({host: req.user.id})
+  .then((parties) => res.status(200).json(parties))
+  .catch((err) => res.status(500).json(err));
+} );
+
 router.post("/", (req, res, next) => {
+  // const reqFiles = [];
+  // console.log("req.files", req.files)
+  // for (var i = 0; i < req.files.length; i++) {
+  //   reqFiles.push(req.files[i].filename)
+  // }
+
+  console.log("req.file", req.file)
   const {
     name,
     description,
-    images,
     date,
     location,
     price,
@@ -69,9 +81,9 @@ router.post("/", (req, res, next) => {
     date,
     location,
     price,
-   
     user: req.user.id,
   })
+ 
     .then((party) => res.status(200).json(party))
     .catch((err) => res.status(500).json(err));
 });
@@ -85,11 +97,17 @@ router.put("/:id", (req, res, next) => {
     .catch((err) => res.status(500).json(err));
 });
 
-// router.put('/edit', uploader.single('photo'), (req, res, next) => {
-//   console.log(req.file);
-//   User.findOneAndUpdate({ _id: req.user.id }, { ...req.body, photo: req.file ? req.file.path : req.user.photo }, { new: true })
+// router.put('/edit', uploader.array('images',12), (req, res, next) => {
+//   console.log("reqfile" , req.file);
+//   console.log("req.userid", req.user.id)
+//   console.log("reqbody", req.body)
+//   User.findByIdAndUpdate( req.user.id , { ...req.body, photo: req.files ? req.files.path : req.user.photo }, { new: true })
 //   .then(user => res.status(200).json(user))
-//   .catch(error => res.status(500).json(error))
+//   .catch(error => {
+//     console.log("holaquetal")
+//     res.status(500).json(error)
+//   })
+  
 // })
 
 router.delete("/:id", (req, res, next) => {
