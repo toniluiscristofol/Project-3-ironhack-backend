@@ -5,15 +5,15 @@ const partySchema = new Schema(
   {
     name: { type: String },
     description: { type: String },
-    images: { type: String },
-    date: { type: String },
-    location: {
+    images: { type: [String] },
+    date: { type: Object },
+    
       city: String,
       street: String,
-    },
     price: { type: Number },
     attendees: [{ type: Schema.Types.ObjectId, ref: "User" }],
-    author: { type: Schema.Types.ObjectId, ref: "User" },
+    host: { type: Schema.Types.ObjectId, ref: "User" },
+    maxAttendees: {type: Number}
   },
   {
     timestamps: true,

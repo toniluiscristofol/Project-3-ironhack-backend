@@ -42,16 +42,18 @@ router.get("/searchmany", (req, res, next) => {
 router.get("/:id", (req, res, next) => {
   const { id } = req.params;
   console.log(id)
-  Party.findOne({ _id: id})
+  Party.findOne({ _id: id })
+    // .populate("host")
+    // .populate("attendees")
     .then((party) => res.status(200).json(party))
     .catch((err) => res.status(500).json(err));
 });
 
-router.get("/userparties", (req, res, next) =>{
-  Party.find({host: req.user.id})
-  .then((parties) => res.status(200).json(parties))
-  .catch((err) => res.status(500).json(err));
-} );
+// router.get("/userparties", (req, res, next) =>{
+//   Party.find({host: req.user.id})
+//   .then((parties) => res.status(200).json(parties))
+//   .catch((err) => res.status(500).json(err));
+// } );
 
 router.post("/", (req, res, next) => {
   // const reqFiles = [];
@@ -61,12 +63,17 @@ router.post("/", (req, res, next) => {
   // }
 
   console.log("req.file", req.file)
+  router.post("/", (req, res, next) => {
+  console.log(req.body)
+  console.log(`These are the req.files ${req.files}`)
   const {
     name,
     description,
     date,
-    location,
+    city,
+    street,
     price,
+    maxAttendees
     
   } = req.body;
 
@@ -74,14 +81,19 @@ router.post("/", (req, res, next) => {
     return res.status(400).json({ message: "Name is required" });
   }
 
+  // photo: req.file ? req.file.path : req.user.photo; 
   Party.create({
     name,
     description,
-    images,
+    // images: req.files[0].path,
     date,
-    location,
+    city,
+    street,
     price,
-    user: req.user.id,
+    maxAttendees,
+    attendees: req.user.id,
+    host: req.user.id,
+    
   })
  
     .then((party) => res.status(200).json(party))
@@ -116,6 +128,14 @@ router.delete("/:id", (req, res, next) => {
     .then(() => res.status(200).json({ message: `Party ${id} deleted 🗑` }))
     .catch((err) => res.status(500).json(err));
 });
+
+router.get("/profile", (req, res, next) => {
+
+  Party.find({ host: req.user.id })
+    
+    .then(() => res.status(200).json({ message: `Party ${id} deleted 🗑` }))
+    .catch((err) => res.status(500).json(err));
+})
 
 module.exports = router;
 
