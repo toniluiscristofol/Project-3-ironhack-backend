@@ -5,15 +5,14 @@ const partySchema = new Schema(
   {
     name: { type: String },
     description: { type: String },
-    images: { type: [String] },
+    images: { type: [String], default:["https://onlyibizaboatparty.com/img/clubberPack.jpg"] },
     date: { type: Object },
-    
-      city: String,
-      street: String,
+    city: String,
+    street: String,
     price: { type: Number },
     attendees: [{ type: Schema.Types.ObjectId, ref: "User" }],
     host: { type: Schema.Types.ObjectId, ref: "User" },
-    maxAttendees: {type: Number}
+    maxAttendees: { type: Number },
   },
   {
     timestamps: true,

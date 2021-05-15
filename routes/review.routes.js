@@ -9,6 +9,14 @@ router.get("/user/:id", (req, res, next) => {
     .catch((err) => res.status(500).json(err));
 });
 
+// router.get("/party/:id", (req, res, next) => {
+//   // const { id } = req.params
+//   Review.find({party: req.party.id })
+//     .then((review) => res.status(200).json(review))
+//     .catch((err) => res.status(500).json(err));
+// });
+
+
 router.get("/:id", (req, res, next) => {
   const { id } = req.params;
   Review.findOne({ _id: id, user: req.user.id })
@@ -37,7 +45,7 @@ router.post("/", (req, res, next) => {
     .catch((err) => res.status(500).json(err));
 });
 
-router.put("/:id", (req, res, next) => {
+router. put("/:id", (req, res, next) => {
   const { id } = req.params;
   Review.findOneAndUpdate({ _id: id, user: req.user.id }, req.body, {
     new: true,
