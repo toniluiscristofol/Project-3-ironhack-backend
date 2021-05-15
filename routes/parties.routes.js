@@ -43,13 +43,13 @@ router.get("/:id", (req, res, next) => {
   const { id } = req.params;
   console.log(id)
   Party.findOne({ _id: id })
-    // .populate("host")
-    // .populate("attendees")
+    .populate("host")
+    .populate("attendees")
     .then((party) => res.status(200).json(party))
     .catch((err) => res.status(500).json(err));
 });
 
-router.post("/", uploader.array("images"), (req, res, next) => {
+router.post("/", uploader.array("images", 5), (req, res, next) => {
   console.log(req.body)
   console.log(`These are the req.files ${req.files}`)
   const {
@@ -71,7 +71,7 @@ router.post("/", uploader.array("images"), (req, res, next) => {
   Party.create({
     name,
     description,
-    // images: req.files[0].path,
+     images: req.files.map(file => file.path),
     date,
     city,
     street,

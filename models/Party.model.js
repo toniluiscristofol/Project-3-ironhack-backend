@@ -7,13 +7,12 @@ const partySchema = new Schema(
     description: { type: String },
     images: { type: [String] },
     date: { type: Object },
-    
-      city: String,
-      street: String,
+    city: String,
+    street: String,
     price: { type: Number },
     attendees: [{ type: Schema.Types.ObjectId, ref: "User" }],
     host: { type: Schema.Types.ObjectId, ref: "User" },
-    maxAttendees: {type: Number}
+    maxAttendees: { type: Number },
   },
   {
     timestamps: true,
