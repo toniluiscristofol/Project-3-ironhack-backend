@@ -110,7 +110,7 @@ router.delete("/:id", (req, res, next) => {
 
 router.get("/host/:id", (req, res, next) => {
 console.log(req.user.id)
-  Party.find({ host: req.user.id })
+  Party.find({ host: req.user.id }).sort({"date": -1}).limit(4)
     
     .then((parties) =>{
     console.log(parties)

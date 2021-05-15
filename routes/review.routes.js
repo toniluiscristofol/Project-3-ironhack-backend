@@ -45,7 +45,7 @@ router.post("/", (req, res, next) => {
     .catch((err) => res.status(500).json(err));
 });
 
-router.put("/:id", (req, res, next) => {
+router. put("/:id", (req, res, next) => {
   const { id } = req.params;
   Review.findOneAndUpdate({ _id: id, user: req.user.id }, req.body, {
     new: true,

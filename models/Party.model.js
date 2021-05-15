@@ -5,7 +5,7 @@ const partySchema = new Schema(
   {
     name: { type: String },
     description: { type: String },
-    images: { type: [String] },
+    images: { type: [String], default:["https://onlyibizaboatparty.com/img/clubberPack.jpg"] },
     date: { type: Object },
     city: String,
     street: String,
