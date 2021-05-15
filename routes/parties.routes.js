@@ -108,13 +108,28 @@ router.delete("/:id", (req, res, next) => {
     .catch((err) => res.status(500).json(err));
 });
 
-router.get("/profile", (req, res, next) => {
-
+router.get("/host/:id", (req, res, next) => {
+console.log(req.user.id)
   Party.find({ host: req.user.id })
     
-    .then(() => res.status(200).json({ message: `Party ${id} deleted 🗑` }))
+    .then((parties) =>{
+    console.log(parties)
+     res.status(200).json(parties)})
     .catch((err) => res.status(500).json(err));
 })
+
+
+router.get("/ateendees/:id", (req, res, next) => {
+  console.log(req.user.id)
+    Party.find({ attendees: req.user.id })
+      
+      .then((parties) =>{
+      console.log(parties)
+       res.status(200).json(parties)})
+      .catch((err) => res.status(500).json(err));
+  })
+
+
 
 module.exports = router;
 
