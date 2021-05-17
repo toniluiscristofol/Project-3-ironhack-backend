@@ -103,14 +103,14 @@ router.put("/:id", (req, res, next) => {
 
 router.delete("/:id", (req, res, next) => {
   const { id } = req.params;
-  Party.findOneAndRemove({ _id: id, user: req.user.id })
+  Party.findOneAndRemove({ _id: id})
     .then(() => res.status(200).json({ message: `Party ${id} deleted 🗑` }))
     .catch((err) => res.status(500).json(err));
 });
 
 router.get("/host/:id", (req, res, next) => {
 console.log(req.user.id)
-  Party.find({ host: req.user.id }).sort({"date": -1}).limit(4)
+  Party.find({ host: req.user.id }).sort({date: 1})
     
     .then((parties) =>{
     console.log(parties)
@@ -118,18 +118,69 @@ console.log(req.user.id)
     .catch((err) => res.status(500).json(err));
 })
 
+router.post("/editParty/:id", (req,res)=>{
+  const { id } = req.params;
+  const {
+    name,
+    description,
+    date,
+    city,
+    street,
+    price,
+    maxAttendees
+    
+  } = req.body;
+  Party.findByIdAndUpdate(id, { 
+    name,
+    description,
+     images: req.files.map(file => file.path),
+    date,
+    city,
+    street,
+    price,
+    maxAttendees,
+  })
+  .then((response)=>{console.log("pushedTO ARRAY OF ATEENDEEs")
+res.status(200).json(response)})
+  .catch(()=>console.log("notpushed"))
+})
 
-router.get("/ateendees/:id", (req, res, next) => {
+router.post("/updateAttendees/:id", (req,res) => {
+  const { id } = req.params;
+  console.log(req.params)
+  console.log(req.user)
+  console.log("REQUSERID", req.user.id)
+  console.log("ID", id)
+  
+  Party.findByIdAndUpdate(id, { $addToSet: { attendees: req.user.id  } })
+  .then((response)=>{console.log("pushedTO ARRAY OF ATEENDEEs")
+res.status(200).json(response)})
+  .catch(()=>console.log("notpushed"))
+})
+
+
+router.get("/attendees/:id", (req, res, next) => {
   console.log(req.user.id)
-    Party.find({ attendees: req.user.id })
-      
+
+  let actualDate = Date.now()
+  console.log("ACTUAL DATE IN MILISECONDS", actualDate)
+  
+    Party.find({$and: [{ attendees: req.user.id }, { date: {"$gt": actualDate } }]})
+    // Party.find({ attendees: req.user.id })
+    // ISODate(Date)
       .then((parties) =>{
       console.log(parties)
        res.status(200).json(parties)})
       .catch((err) => res.status(500).json(err));
   })
 
-
+// router.get("/goingTo/:id", (req, res, next) =>{
+//   Party.find({attendees: req.user.id})
+//   .then((parties) =>{
+//     console.log(parties)
+//      res.status(200).json(parties)})
+//     .catch((err) => res.status(500).json(err));
+// })
 
 module.exports = router;
 

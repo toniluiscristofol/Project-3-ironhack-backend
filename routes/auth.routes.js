@@ -33,6 +33,7 @@ router.post('/signup', (req, res, next) => {
       email, 
       password: hashPass,
       photo
+      
     })
     .then((newUser) => {
       // Passport req.login permite iniciar sesión tras crear el usuario
