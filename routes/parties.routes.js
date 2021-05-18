@@ -118,7 +118,7 @@ console.log(req.user.id)
     .catch((err) => res.status(500).json(err));
 })
 
-router.put("/editParty/:id", (req,res)=>{
+router.put("/editParty/:id", uploader.array("images", 5), (req,res)=>{
   const { id } = req.params;
   const {
     name,
