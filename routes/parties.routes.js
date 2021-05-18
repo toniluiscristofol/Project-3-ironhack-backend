@@ -58,6 +58,8 @@ router.post("/", uploader.array("images", 5), (req, res, next) => {
     date,
     city,
     street,
+    latitude,
+    longitude,
     price,
     maxAttendees
     
@@ -75,6 +77,8 @@ router.post("/", uploader.array("images", 5), (req, res, next) => {
     date,
     city,
     street,
+    latitude,
+    longitude,
     price,
     maxAttendees,
     attendees: req.user.id,

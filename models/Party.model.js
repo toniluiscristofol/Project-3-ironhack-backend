@@ -9,6 +9,8 @@ const partySchema = new Schema(
     date: { type: Object },
     city: String,
     street: String,
+    latitude: Number,
+    longitude: Number,
     price: { type: Number },
     attendees: [{ type: Schema.Types.ObjectId, ref: "User" }],
     host: { type: Schema.Types.ObjectId, ref: "User" },
