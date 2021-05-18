@@ -118,7 +118,7 @@ console.log(req.user.id)
     .catch((err) => res.status(500).json(err));
 })
 
-router.post("/editParty/:id", (req,res)=>{
+router.put("/editParty/:id", (req,res)=>{
   const { id } = req.params;
   const {
     name,
@@ -140,7 +140,7 @@ router.post("/editParty/:id", (req,res)=>{
     price,
     maxAttendees,
   })
-  .then((response)=>{console.log("pushedTO ARRAY OF ATEENDEEs")
+  .then((response)=>{console.log("edited")
 res.status(200).json(response)})
   .catch(()=>console.log("notpushed"))
 })
