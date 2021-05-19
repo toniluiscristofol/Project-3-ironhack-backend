@@ -1,28 +1,29 @@
 {
   "files": {
-    "main.css": "/static/css/main.771f923b.chunk.css",
-    "main.js": "/static/js/main.40627ad4.chunk.js",
-    "main.js.map": "/static/js/main.40627ad4.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.97dc0c19.js",
-    "runtime-main.js.map": "/static/js/runtime-main.97dc0c19.js.map",
+    "main.css": "/static/css/main.583c8339.chunk.css",
+    "main.js": "/static/js/main.4f750d58.chunk.js",
+    "main.js.map": "/static/js/main.4f750d58.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.226cb632.js",
+    "runtime-main.js.map": "/static/js/runtime-main.226cb632.js.map",
     "static/css/2.b74b41c0.chunk.css": "/static/css/2.b74b41c0.chunk.css",
-    "static/js/2.56c696c0.chunk.js": "/static/js/2.56c696c0.chunk.js",
-    "static/js/2.56c696c0.chunk.js.map": "/static/js/2.56c696c0.chunk.js.map",
-    "static/js/3.ad741390.chunk.js": "/static/js/3.ad741390.chunk.js",
-    "static/js/3.ad741390.chunk.js.map": "/static/js/3.ad741390.chunk.js.map",
+    "static/js/2.1f9ed63d.chunk.js": "/static/js/2.1f9ed63d.chunk.js",
+    "static/js/2.1f9ed63d.chunk.js.map": "/static/js/2.1f9ed63d.chunk.js.map",
+    "static/js/3.f295ee2c.chunk.js": "/static/js/3.f295ee2c.chunk.js",
+    "static/js/3.f295ee2c.chunk.js.map": "/static/js/3.f295ee2c.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.b74b41c0.chunk.css.map": "/static/css/2.b74b41c0.chunk.css.map",
-    "static/css/main.771f923b.chunk.css.map": "/static/css/main.771f923b.chunk.css.map",
-    "static/js/2.56c696c0.chunk.js.LICENSE.txt": "/static/js/2.56c696c0.chunk.js.LICENSE.txt",
+    "static/css/main.583c8339.chunk.css.map": "/static/css/main.583c8339.chunk.css.map",
+    "static/js/2.1f9ed63d.chunk.js.LICENSE.txt": "/static/js/2.1f9ed63d.chunk.js.LICENSE.txt",
     "static/media/App.css": "/static/media/Gelion-Regular.f96d1bba.ttf",
     "static/media/default-skin.css": "/static/media/default-skin.f64c3af3.svg",
+    "static/media/pexels-wendy-wei-1537638.fcffbe67.jpg": "/static/media/pexels-wendy-wei-1537638.fcffbe67.jpg",
     "static/media/index.css": "/static/media/roboto-vietnamese-400-normal.c0bec65d.woff2"
   },
   "entrypoints": [
-    "static/js/runtime-main.97dc0c19.js",
+    "static/js/runtime-main.226cb632.js",
     "static/css/2.b74b41c0.chunk.css",
-    "static/js/2.56c696c0.chunk.js",
-    "static/css/main.771f923b.chunk.css",
-    "static/js/main.40627ad4.chunk.js"
+    "static/js/2.1f9ed63d.chunk.js",
+    "static/css/main.583c8339.chunk.css",
+    "static/js/main.4f750d58.chunk.js"
   ]
 }
