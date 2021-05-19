@@ -32,7 +32,7 @@ router.post('/signup', (req, res, next) => {
       username, 
       email, 
       password: hashPass,
-      photo
+      // photo
       
     })
     .then((newUser) => {
