@@ -31,7 +31,7 @@ router.post('/signup', (req, res, next) => {
     User.create({
       username, 
       email, 
-      password: hashPass,
+      password: hashPass
       
     })
     .then((newUser) => {
