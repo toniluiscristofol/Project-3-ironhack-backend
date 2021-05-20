@@ -75,10 +75,8 @@ router.post('/logout', (req, res, next) => {
   return res.status(200).json({ message: 'Log out success!'});
 })
 
-router.put('/edit', uploader.single('photo'), (req, res, next) => {
-  console.log("reqfile" , req.file);
-  console.log("req.userid", req.user.id)
-  console.log("reqbody", req.body)
+router.post('/edit', uploader.single('photo'), (req, res, next) => {
+  
   User.findByIdAndUpdate( req.user.id , { ...req.body, photo: req.file ? req.file.path : req.user.photo }, { new: true })
   .then(user => res.status(200).json(user))
   .catch(error => {

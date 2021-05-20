@@ -115,7 +115,7 @@ router.delete("/:id", (req, res, next) => {
 router.get("/host/:id", (req, res, next) => {
 console.log(req.user.id)
   Party.find({ host: req.user.id }).sort({date: 1})
-    
+    .populate("host")
     .then((parties) =>{
     console.log(parties)
      res.status(200).json(parties)})
@@ -151,12 +151,10 @@ res.status(200).json(response)})
 
 router.post("/updateAttendees/:id", (req,res) => {
   const { id } = req.params;
-  console.log(req.params)
-  console.log(req.user)
-  console.log("REQUSERID", req.user.id)
-  console.log("ID", id)
   
-  Party.findByIdAndUpdate(id, { $addToSet: { attendees: req.user.id  } })
+  
+  Party.findByIdAndUpdate(id, { $addToSet: { attendees: req.user.id } })
+    .populate("host")
   .then((response)=>{console.log("pushedTO ARRAY OF ATEENDEEs")
 res.status(200).json(response)})
   .catch(()=>console.log("notpushed"))
@@ -170,32 +168,14 @@ router.get("/attendees/:id", (req, res, next) => {
   console.log("ACTUAL DATE IN MILISECONDS", actualDate)
   
     Party.find({$and: [{ attendees: req.user.id }, { date: {"$gt": actualDate } }]})
-    // Party.find({ attendees: req.user.id })
-    // ISODate(Date)
+    .populate("host")
       .then((parties) =>{
       console.log(parties)
        res.status(200).json(parties)})
       .catch((err) => res.status(500).json(err));
   })
 
-// router.get("/goingTo/:id", (req, res, next) =>{
-//   Party.find({attendees: req.user.id})
-//   .then((parties) =>{
-//     console.log(parties)
-//      res.status(200).json(parties)})
-//     .catch((err) => res.status(500).json(err));
-// })
+
 
 module.exports = router;
 
-// name: {type: String, required: true},
-//    description: {type: String, required: true},
-//    images: {type: Array, required: true},
-//    date: {type: Date, required: true},
-//    city: {type: String},
-//    street: {type: String},
-//    ageInterval: {type: String},
-//    musicType: {type: String},
-//    price: {type: Number},
-//    attendants: [{type: Schema.Types.ObjectId,ref:'User'}],
-//    smoking: {type: Boolean}
