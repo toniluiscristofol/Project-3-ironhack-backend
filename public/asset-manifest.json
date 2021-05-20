@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.8f01305c.chunk.css",
-    "main.js": "/static/js/main.a889495f.chunk.js",
-    "main.js.map": "/static/js/main.a889495f.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.d9b23a96.js",
-    "runtime-main.js.map": "/static/js/runtime-main.d9b23a96.js.map",
-    "static/css/2.b74b41c0.chunk.css": "/static/css/2.b74b41c0.chunk.css",
-    "static/js/2.91167c6b.chunk.js": "/static/js/2.91167c6b.chunk.js",
-    "static/js/2.91167c6b.chunk.js.map": "/static/js/2.91167c6b.chunk.js.map",
-    "static/js/3.fc79af9c.chunk.js": "/static/js/3.fc79af9c.chunk.js",
-    "static/js/3.fc79af9c.chunk.js.map": "/static/js/3.fc79af9c.chunk.js.map",
+    "main.css": "/static/css/main.fa19d67c.chunk.css",
+    "main.js": "/static/js/main.af7d72ca.chunk.js",
+    "main.js.map": "/static/js/main.af7d72ca.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.4e4a637e.js",
+    "runtime-main.js.map": "/static/js/runtime-main.4e4a637e.js.map",
+    "static/css/2.595d3330.chunk.css": "/static/css/2.595d3330.chunk.css",
+    "static/js/2.79304954.chunk.js": "/static/js/2.79304954.chunk.js",
+    "static/js/2.79304954.chunk.js.map": "/static/js/2.79304954.chunk.js.map",
+    "static/js/3.8835a298.chunk.js": "/static/js/3.8835a298.chunk.js",
+    "static/js/3.8835a298.chunk.js.map": "/static/js/3.8835a298.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/2.b74b41c0.chunk.css.map": "/static/css/2.b74b41c0.chunk.css.map",
-    "static/css/main.8f01305c.chunk.css.map": "/static/css/main.8f01305c.chunk.css.map",
-    "static/js/2.91167c6b.chunk.js.LICENSE.txt": "/static/js/2.91167c6b.chunk.js.LICENSE.txt",
+    "static/css/2.595d3330.chunk.css.map": "/static/css/2.595d3330.chunk.css.map",
+    "static/css/main.fa19d67c.chunk.css.map": "/static/css/main.fa19d67c.chunk.css.map",
+    "static/js/2.79304954.chunk.js.LICENSE.txt": "/static/js/2.79304954.chunk.js.LICENSE.txt",
     "static/js/mapbox-gl-csp-worker.7bd7d0e3.worker.js": "/static/js/mapbox-gl-csp-worker.7bd7d0e3.worker.js",
     "static/js/mapbox-gl-csp-worker.7bd7d0e3.worker.js.map": "/static/js/mapbox-gl-csp-worker.7bd7d0e3.worker.js.map",
     "static/media/App.css": "/static/media/Gelion-Regular.f96d1bba.ttf",
@@ -22,10 +22,10 @@
     "static/media/index.css": "/static/media/roboto-vietnamese-400-normal.c0bec65d.woff2"
   },
   "entrypoints": [
-    "static/js/runtime-main.d9b23a96.js",
-    "static/css/2.b74b41c0.chunk.css",
-    "static/js/2.91167c6b.chunk.js",
-    "static/css/main.8f01305c.chunk.css",
-    "static/js/main.a889495f.chunk.js"
+    "static/js/runtime-main.4e4a637e.js",
+    "static/css/2.595d3330.chunk.css",
+    "static/js/2.79304954.chunk.js",
+    "static/css/main.fa19d67c.chunk.css",
+    "static/js/main.af7d72ca.chunk.js"
   ]
 }
