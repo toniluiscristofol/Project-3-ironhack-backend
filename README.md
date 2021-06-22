@@ -143,19 +143,7 @@ party model
    smoking: {type: Boolean}
  }
 ```
-review model
 
-```javascript
-{
-    value: Number,
-    description: String,
-    role: {
-      type: String,
-      enum: ["host", "attendee"],
-    },
-    user: { type: Schema.Types.ObjectId, ref: "User" },
-  }
-```
 
 
 
@@ -196,14 +184,10 @@ review model
 
 The url to our repository and our deployed project
 
-[Client repository Link](https://github.com/toniluiscristofol/Project-3-ironhack-backend)
+[Client repository Link](https://github.com/toniluiscristofol/Project-3-ironhack-frontend)
 
-[Server repository Link](https://github.com/screeeen/project-server)
+[Server repository Link](https://github.com/toniluiscristofol/Project-3-ironhack-backend)
 
-[Deployed App Link](http://heroku.com)
+[Deployed App Link](https://shappn.herokuapp.com/)
 
-### Slides
 
-The url to our slides
-
-[Slides Link](http://slides.com)
